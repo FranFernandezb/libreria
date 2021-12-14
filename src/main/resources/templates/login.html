@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head">
+    <title>Registro Usuario</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+    <nav th:replace="/fragments/nav-bar :: nav-bar-dark"> </nav>
+    <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+      <span th:text="${error}"></span>
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success mt-3" role="alert">
+      <span>Has cerrado sesión correctamente</span>
+    </div>
+    <form class="nnn" th:action="@{/logincheck}" method="POST">
+      <h1>Login</h1>
+      <label>Nombre de Usuario</label><br>
+      <input type="text" name="username"/><br>
+      <label>Contraseña</label><br>
+      <input type="password" name="password"/><br><br>
+      
+      <button type="submit" class="btn-dark px-5 py-1 ms-auto">Ingresar</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head">
+    <title>Libros</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <nav th:replace="/fragments/nav-bar :: nav-bar-dark"> </nav>
+    <div class="container">
+      <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+        <span th:text="${error}"></span>
+      </div>
+      <div th:if="${success}" class="alert alert-success mt-3" role="alert">
+        <span th:text="${success}"></span>
+      </div>
+      <div class="card mt-3">
+        <div class="card-header text-center">Lista Libros </div>
+        <div class="card-body">
+          <form class="row g-3" th:action="@{/libro/list}">
+            <div class="col">
+              
+              <input
+                type="text"
+                style="width: 100%;"
+                name="q"
+                placeholder="Busque un libro por Título, Autor o Editorial..."
+                
+              />
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-dark mb-3"
+                >Buscar</button
+              >
+            </div>
+          </form>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nº</th>
+                <th>ISBN</th>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Ejemplares</th>
+                <th>Prestados</th>
+                <th>Restantes</th>
+                <th>Autor</th>
+                <th>Editorial</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr th:each=" l,iterator : ${libros}">
+                <td th:text="${iterator.index+1}"></td>
+                <td th:text="${l.ISBN}"></td>
+                <td th:text="${l.titulo}"></td>
+                <td th:text="${l.anio}"></td>
+                <td th:text="${l.ejemplares}"></td>
+                <td th:text="${l.ejemplaresPrestados}"></td>
+                <td th:text="${l.ejemplaresRestantes}"></td>
+                <td th:text="${l.autor.nombre}"></td>
+                <td th:text="${l.editorial.nombre}"></td>
+                <td>
+                  <a th:href="@{/libro/delete}+'?id='+${l.id}"
+                    ><button sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-secondary ms-auto"
+                      >Eliminar</button
+                    ></a
+                  >
+                  <a th:href="@{/libro/form}+'?id='+${l.id}"
+                    ><button sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-secondary ms-auto"
+                      >Editar</button
+                    ></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

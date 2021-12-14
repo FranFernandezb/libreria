@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head">
+    <title>Libros</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+    <nav th:replace="/fragments/nav-bar :: nav-bar-dark"> </nav>
+    <form class="nnn"th:action="@{/libro/save}" method="POST" th:object="${libro}">
+      <h3>Ingresar Libro</h3>
+      <input hidden th:field="*{id}">
+      <label>ISBN</label><br>
+      <input type="number" th:field="*{ISBN}"/><br>
+      <label>Título</label><br>
+      <input type="text" th:field="*{titulo}"/><br>
+      <label>Año</label><br>
+      <input type="number" th:field="*{anio}"/><br>
+      <label>Ejemplares</label><br>
+      <input type="number" th:field="*{ejemplares}"/><br>
+      <label>Ejemplares Prestados</label><br>
+      <input type="number" th:field="*{ejemplaresPrestados}"/><br>
+      <label for="autor" class="form-label">Autor</label>
+      <select th:field="*{autor.Id}">
+        <option th:each="a : ${autores}" th:text="${a.nombre}" th:value="${a.Id}"></option>
+      </select>
+      <label for="editorial" class="form-label">Editorial</label>
+      <select th:field="*{editorial.Id}">
+        <option th:each="e : ${editoriales}" th:text="${e.nombre}" th:value="${e.Id}"></option>
+      </select><br><br>
+      <input type="submit" value="Guardar">
+    </form>
+  </body>
+</html>

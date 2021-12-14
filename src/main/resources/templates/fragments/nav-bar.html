@@ -1,0 +1,8 @@
+<nav th:fragment="nav-bar-dark" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" th:href="@{/}">Página Principal</a>
+      <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+      <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+      <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/registro}">Registrarse</a>
+    </div>
+  </nav>

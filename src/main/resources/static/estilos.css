@@ -1,0 +1,45 @@
+body{
+    background-image: url(http://3.bp.blogspot.com/-YMXh33y7voU/UHj4gGzBiOI/AAAAAAAAAjo/r5mnPY3ELlM/s1600/open_book-wallpaper-2400x1350.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.abc{
+    color: #005f73;
+    text-decoration: none;
+    
+    
+}
+.abc:hover{
+    text-decoration: none;
+    color: #94d2bd;
+   
+}
+.card-header{
+    font-size: x-large;
+    font-family: 'Rubik', sans-serif; 
+}
+.nnn{
+    text-align: center;
+    font-family: 'Rubik', sans-serif; 
+}
+
+.nnn h3{
+    padding: 10px 0;
+}
+
+.card-header a{
+    text-decoration: none;
+    color: black;
+}
+.card-header a:hover{
+    text-decoration: none;
+    color: #fca311;
+}
+
+.card-body th{
+    text-align: center;
+}
+.card-body td{
+    text-align: center;
+}
